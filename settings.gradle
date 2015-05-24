@@ -1,0 +1,2 @@
+rootProject.name = 'weiproject'
+apply from : 'weiproject-settings.gradle'

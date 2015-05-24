@@ -1,0 +1,16 @@
+apply from:	'libraries.gradle'
+version = '1.0'
+
+allprojects{
+	apply plugin: 'java'
+	apply plugin: 'eclipse-wtp'
+	
+	task 'create-dirs' << {
+        	sourceSets*.java.srcDirs*.each { it.mkdirs() }
+       		sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+	}
+	
+	repositories {
+        	mavenCentral()
+	}
+}     

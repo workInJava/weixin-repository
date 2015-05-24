@@ -1,0 +1,4 @@
+include ':weiproject:test-wei-project-front'
+include ':weiproject:test-wei-project-dao'
+include ':weiproject:test-wei-project-common'
+include ':weiproject:test-wei-project-service'
