@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<settings>
@@ -12,8 +12,24 @@
 		<setting name="defaultStatementTimeout" value="25" />
 		<setting name="safeRowBoundsEnabled" value="false" />
 		<setting name="mapUnderscoreToCamelCase" value="false" />
-		<setting name="localCacheScope" value="STATEMENT" />
+		<setting name="localCacheScope" value="SESSION" />
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
 	</settings>
+
+
+	<!-- 命名空间 -->
+	<!-- <typeAliases>
+		<typeAlias alias="User" type="cn.springmvc.model.User" />
+	</typeAliases> -->
+
+	<!-- 映射map -->
+	<mappers>
+		<mapper resource="mybatis/sqlmap/gen/PermissionMapper.xml" />
+		<mapper resource="mybatis/sqlmap/gen/RolePermissionMapper.xml" />
+		<mapper resource="mybatis/sqlmap/gen/RoleOfUserMapper.xml" />
+		<mapper resource="mybatis/sqlmap/gen/UserDetailMapper.xml" />
+		<mapper resource="mybatis/sqlmap/gen/RoleMapper.xml" />
+		<mapper resource="mybatis/sqlmap/gen/UserPermissionMapper.xml" />
+	</mappers>
 </configuration>

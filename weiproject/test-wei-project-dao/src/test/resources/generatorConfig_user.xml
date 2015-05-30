@@ -27,8 +27,6 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 		
-		
-		
 		<!-- 生成模型包名和位置 -->
 		<javaModelGenerator targetPackage="com.test.project.po.gen"
 			targetProject="D:/github/weixin-repository/weiproject/test-wei-project-dao/src/main/java">

@@ -1,7 +1,8 @@
 ext{
 	versions = [
-                spring: '4.1.6.RELEASE',
-		spring_security: '4.0.1.RELEASE'
+            spring: '4.1.6.RELEASE',
+			shiro:	'1.2.3',
+			spring_security: '4.0.1.RELEASE'
 		
         ]
 
@@ -27,6 +28,10 @@ ext{
 		         spring_security_config: "org.springframework.security:spring-security-config:${versions.spring_security}",
 		         spring_security_web:    "org.springframework.security:spring-security-web:${versions.spring_security}",
 
+				 shiro_core:					 "org.apache.shiro:shiro-core:${versions.shiro}",
+				 shiro_spring:			 "org.apache.shiro:shiro-spring:${versions.shiro}",
+				 shiro_web:				 "org.apache.shiro:shiro-web:${versions.shiro}",
+				 
 		         c3p0:			         "c3p0:c3p0:0.9.1.2",
      		     ojdbc:			         "ojdbc:ojdbc:14",
 		         
