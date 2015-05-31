@@ -2,9 +2,9 @@
 <#assign css=['css/signin.css']>
 <#include "../common/commonPage.ftl">
 <@html title="Signin" javascripts=javascripts css=css>
-  <body>
     <div class="container">
-      <form class="form-signin" action="">
+      <form class="form-signin" action="" method="POST">
+      	<label>${error!''}</label>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="inputEmail" name="loginName"  class="form-control" placeholder="Email address" required autofocus>

@@ -18,6 +18,8 @@ public class UserDetail implements Serializable {
 
     private String type;
 
+    private String salt;
+
     private static final long serialVersionUID = 1L;
 
     public String getUserId() {
@@ -76,6 +78,14 @@ public class UserDetail implements Serializable {
         this.type = type == null ? null : type.trim();
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -94,7 +104,8 @@ public class UserDetail implements Serializable {
             && (this.getLastLognTime() == null ? other.getLastLognTime() == null : this.getLastLognTime().equals(other.getLastLognTime()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()));
+            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
+            && (this.getSalt() == null ? other.getSalt() == null : this.getSalt().equals(other.getSalt()));
     }
 
     @Override
@@ -108,6 +119,7 @@ public class UserDetail implements Serializable {
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
+        result = prime * result + ((getSalt() == null) ? 0 : getSalt().hashCode());
         return result;
     }
 }

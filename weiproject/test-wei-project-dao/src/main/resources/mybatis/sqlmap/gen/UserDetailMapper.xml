@@ -9,6 +9,7 @@
     <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="DATE" />
     <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="SALT" property="salt" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    USER_ID, LOGIN_NAME, PASSWORD, LAST_LOGN_TIME, CREATE_TIME, UPDATE_TIME, TYPE
+    USER_ID, LOGIN_NAME, PASSWORD, LAST_LOGN_TIME, CREATE_TIME, UPDATE_TIME, TYPE, SALT
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.project.po.gen.UserDetailExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.test.project.po.gen.UserDetail" >
     insert into USER_DETAIL (USER_ID, LOGIN_NAME, PASSWORD, 
       LAST_LOGN_TIME, CREATE_TIME, UPDATE_TIME, 
-      TYPE)
+      TYPE, SALT)
     values (#{userId,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{lastLognTime,jdbcType=DATE}, #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, 
-      #{type,jdbcType=VARCHAR})
+      #{type,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.test.project.po.gen.UserDetail" >
     insert into USER_DETAIL
@@ -133,6 +134,9 @@
       <if test="type != null" >
         TYPE,
       </if>
+      <if test="salt != null" >
+        SALT,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="type != null" >
         #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.type != null" >
         TYPE = #{record.type,jdbcType=VARCHAR},
       </if>
+      <if test="record.salt != null" >
+        SALT = #{record.salt,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       LAST_LOGN_TIME = #{record.lastLognTime,jdbcType=DATE},
       CREATE_TIME = #{record.createTime,jdbcType=DATE},
       UPDATE_TIME = #{record.updateTime,jdbcType=DATE},
-      TYPE = #{record.type,jdbcType=VARCHAR}
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      SALT = #{record.salt,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="type != null" >
         TYPE = #{type,jdbcType=VARCHAR},
       </if>
+      <if test="salt != null" >
+        SALT = #{salt,jdbcType=VARCHAR},
+      </if>
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
@@ -237,7 +251,8 @@
       LAST_LOGN_TIME = #{lastLognTime,jdbcType=DATE},
       CREATE_TIME = #{createTime,jdbcType=DATE},
       UPDATE_TIME = #{updateTime,jdbcType=DATE},
-      TYPE = #{type,jdbcType=VARCHAR}
+      TYPE = #{type,jdbcType=VARCHAR},
+      SALT = #{salt,jdbcType=VARCHAR}
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
   <select resultMap="BaseResultMap" parameterType="com.test.project.po.gen.UserDetailExample" id="selectByExampleWithRowbounds" >
