@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -14,6 +15,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.StringUtils;
 
+import com.test.common.enums.UserStateEnum;
 import com.test.project.po.gen.UserDetail;
 import com.text.project.service.IUserService;
 
@@ -36,6 +38,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
 			UserDetail userDetail = userService.findByUsername(userName);
 			if(userDetail == null){
 				throw new UnknownAccountException();//没找到帐号
+			}
+			if(UserStateEnum.LOCK.toString().equals(userDetail.getType())){
+				throw new LockedAccountException(); //帐号锁定
 			}
 			SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 					userDetail.getLoginName(), //用户名
