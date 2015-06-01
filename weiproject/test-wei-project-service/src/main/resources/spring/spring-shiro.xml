@@ -9,7 +9,6 @@
 		<property name="usernameParam" value="loginName" />
 		<property name="passwordParam" value="password" />
 		<property name="loginUrl" value="/login" />
-		<property name="successUrl" value="/main/productlist" />
 	</bean>
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -28,8 +27,7 @@
 				/images/** = anon
 				/javascripts/** = anon
 				/login = authc
-				/main/list = authc
-				/** = authc
+				/** = user
 			</value>
 		</property>
 	</bean>
@@ -37,7 +35,14 @@
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="shiroDbRealm" />
 	</bean>
+	
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="md5"/>
+		<property name="hashIterations" value="2"/>
+		<property name="storedCredentialsHexEncoded" value="false"/>
+	</bean>
 
 	<bean id="shiroDbRealm" class="com.text.project.auth.realm.ShiroDbRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher"/>
 	</bean>
 </beans>

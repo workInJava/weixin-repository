@@ -11,6 +11,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.StringUtils;
 
 import com.test.project.po.gen.UserDetail;
@@ -39,9 +40,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
 			SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 					userDetail.getLoginName(), //”√ªß√˚
 					userDetail.getPassword(), //√‹¬Î
-					//ByteSource.Util.bytes(userDetail.getSalt()),//salt=username+salt
 					getName() //realm name
 					);
+			authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(userDetail.getLoginName()+userDetail.getSalt()));
 			return authenticationInfo;
 		}
 		return null;
