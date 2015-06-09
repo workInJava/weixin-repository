@@ -2,4 +2,5 @@ apply plugin: 'java'
 
 dependencies {
 	compile project(':weiproject:test-wei-project-dao')
+	compile(libraries.httpclient) { force = true}
 }

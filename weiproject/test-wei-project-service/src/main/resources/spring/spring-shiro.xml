@@ -34,6 +34,7 @@
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="shiroDbRealm" />
+		<property name="sessionManager" ref="sessionManager"/>
 	</bean>
 	
 	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
@@ -44,5 +45,28 @@
 
 	<bean id="shiroDbRealm" class="com.text.project.auth.realm.ShiroDbRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+	</bean>
+	
+	<!--自己维护session,废弃servlet容器的会话-->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="sessionIdCookie" ref="sessionIdCookie"/><!--会话Cookie的模板 -->
+		<property name="listeners">
+			<list>
+				<ref bean="shiroListener" />
+			</list>
+		</property>
+		<property  name="SessionDAO" ref="SessionDao"/>
+	</bean>
+	
+	<!--会话Cookie的模板 -->
+	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<property name="name" value="sid"/><!-- 设置Cookie 名字，默认为JSESSIONID -->
+		<property name="HttpOnly" value="true"/>
+	</bean>
+	
+	<bean id="shiroListener" class="com.text.project.auth.listeners.ShiroListener">
+	</bean>
+	
+	<bean id="SessionDao" class="com.text.project.auth.sessiondao.SelfSessionDao">
 	</bean>
 </beans>

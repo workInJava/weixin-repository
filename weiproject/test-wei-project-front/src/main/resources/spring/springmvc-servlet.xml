@@ -13,7 +13,7 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.spring.controller.*" />
 
-	<mvc:resources mapping="/javascript/**" location="/resources/javascript/" />
+	<mvc:resources mapping="/javascript/**" location="/resources/javascripts/" />
 	<mvc:resources mapping="/css/**" location="/resources/css/" />
 	<mvc:resources mapping="/images/**" location="/resources/images/" />
 

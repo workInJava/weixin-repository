@@ -1,4 +1,4 @@
-<#assign basepath='test-wei-project-front'/>
+<#assign basepath='test-wei-project-front/'/>
 <#macro html title javascripts css>
 	<html>
 		 <head>
@@ -19,7 +19,7 @@
 		    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		    <#if javascripts??>
 			    <#list javascripts as js>
-			    	<script src="../${js}"></script>
+			    	<script src="${js}"></script>
 			    </#list>
 		    </#if>
 		 </head>

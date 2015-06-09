@@ -7,50 +7,55 @@ ext{
         ]
 
         libraries = [
-       		 servlet:		 'javax.servlet:javax.servlet-api:3.1.0',
-      		 spring_agent:           "org.springframework:spring-agent:2.5.6.SEC03",
-               	 spring_aop:             "org.springframework:spring-aop:${versions.spring}",
-               	 spring_aspects:         "org.springframework:spring-aspects:${versions.spring}",
-              	 spring_context:         "org.springframework:spring-context:${versions.spring}",
-               	 spring_context_support: "org.springframework:spring-context-support:${versions.spring}",
-              	 spring_expression:      "org.springframework:spring-expression:${versions.spring}",
-             	 spring_instrument:      "org.springframework:spring-instrument:${versions.spring}", //spring字节码工具库
-              	 spring_jdbc:            "org.springframework:spring-jdbc:${versions.spring}",
-              	 spring_orm:             "org.springframework:spring-orm:${versions.spring}",//spring Object/Relational Mapping
-				 spring_dao:		 	 "org.springframework:spring-dao:2.0.8",
-               	 spring_test:            "org.springframework:spring-test:${versions.spring}",
-               	 spring_tx:              "org.springframework:spring-tx:${versions.spring}",//spring Transaction
-           	     spring_web:             "org.springframework:spring-web:${versions.spring}",
-                 spring_webmvc:          "org.springframework:spring-webmvc:${versions.spring}",
-           	     spring_beans:           "org.springframework:spring-beans:${versions.spring}",
-		         spring_core:            "org.springframework:spring-core:${versions.spring}",
+				servlet:		      	 "javax.servlet:javax.servlet-api:3.1.0",
+				
+				spring_agent:            "org.springframework:spring-agent:2.5.6.SEC03",
+               	spring_aop:              "org.springframework:spring-aop:${versions.spring}",
+               	spring_aspects:          "org.springframework:spring-aspects:${versions.spring}",
+              	spring_context:          "org.springframework:spring-context:${versions.spring}",
+               	spring_context_support:  "org.springframework:spring-context-support:${versions.spring}",
+              	spring_expression:       "org.springframework:spring-expression:${versions.spring}",
+             	spring_instrument:       "org.springframework:spring-instrument:${versions.spring}", //spring字节码工具库
+              	spring_jdbc:             "org.springframework:spring-jdbc:${versions.spring}",
+              	spring_orm:              "org.springframework:spring-orm:${versions.spring}",//spring Object/Relational Mapping
+				spring_dao:		 	     "org.springframework:spring-dao:2.0.8",
+				spring_test:             "org.springframework:spring-test:${versions.spring}",
+               	spring_tx:               "org.springframework:spring-tx:${versions.spring}",//spring Transaction
+           	    spring_web:              "org.springframework:spring-web:${versions.spring}",
+                spring_webmvc:           "org.springframework:spring-webmvc:${versions.spring}",
+           	    spring_beans:            "org.springframework:spring-beans:${versions.spring}",
+		        spring_core:             "org.springframework:spring-core:${versions.spring}",
 
-		         spring_security_core:   "org.springframework.security:spring-security-core:${versions.spring_security}",
-		         spring_security_config: "org.springframework.security:spring-security-config:${versions.spring_security}",
-		         spring_security_web:    "org.springframework.security:spring-security-web:${versions.spring_security}",
+		        spring_security_core:    "org.springframework.security:spring-security-core:${versions.spring_security}",
+		        spring_security_config:  "org.springframework.security:spring-security-config:${versions.spring_security}",
+		        spring_security_web:     "org.springframework.security:spring-security-web:${versions.spring_security}",
 
-				 shiro_core:					 "org.apache.shiro:shiro-core:${versions.shiro}",
-				 shiro_spring:			 "org.apache.shiro:shiro-spring:${versions.shiro}",
-				 shiro_web:				 "org.apache.shiro:shiro-web:${versions.shiro}",
+				shiro_core:				 "org.apache.shiro:shiro-core:${versions.shiro}",
+				shiro_spring:			 "org.apache.shiro:shiro-spring:${versions.shiro}",
+				shiro_web:				 "org.apache.shiro:shiro-web:${versions.shiro}",
 				 
-		         c3p0:			         "c3p0:c3p0:0.9.1.2",
-     		     ojdbc:			         "ojdbc:ojdbc:14",
+		        c3p0:			         "c3p0:c3p0:0.9.1.2",
+     		    ojdbc:			         "ojdbc:ojdbc:14",
 		         
 
-		         mybatis:  		   	 	 'org.mybatis:mybatis:3.2.8',
-		         mybatis_spring:	  	 'org.mybatis:mybatis-spring:1.2.2',
-	             mybatis_generator_core: 'org.mybatis.generator:mybatis-generator-core:1.3.2',	
-         	     ibatis:                 'org.apache.ibatis:ibatis-sqlmap:2.3.4.726',
-		         junit:                  'junit:junit:4.12',
+		        mybatis:  		   	 	'org.mybatis:mybatis:3.2.8',
+		        mybatis_spring:	  	 	'org.mybatis:mybatis-spring:1.2.2',
+	            mybatis_generator_core: 'org.mybatis.generator:mybatis-generator-core:1.3.2',	
+         	    ibatis:                 'org.apache.ibatis:ibatis-sqlmap:2.3.4.726',
+		        junit:                  'junit:junit:4.12',
 
-				 //log
-				 slf4j:					 'org.slf4j:jcl-over-slf4j:1.7.12',
-				 slf4j_api:				 'org.slf4j:slf4j-api:1.7.12',
-				 slf4j_log4j12:			 'org.slf4j:slf4j-log4j12:1.7.12',
-				 log4j:					 'log4j:log4j:1.2.17',
-				 logback:	     	     'ch.qos.logback:logback-classic:1.1.3',
+				//log
+				slf4j:					 'org.slf4j:jcl-over-slf4j:1.7.12',
+				slf4j_api:				 'org.slf4j:slf4j-api:1.7.12',
+				slf4j_log4j12:			 'org.slf4j:slf4j-log4j12:1.7.12',
+				log4j:					 'log4j:log4j:1.2.17',
+				logback:	     	     'ch.qos.logback:logback-classic:1.1.3',
 
-				 freemarker:             'org.freemarker:freemarker:2.3.22'
+				freemarker:             'org.freemarker:freemarker:2.3.22',
 
-        ]
+				redis_clients:			'redis.clients:jedis:2.7.2',
+				
+				httpclient: 			'org.apache.httpcomponents:httpclient:4.5'
+				
+	]
 }
