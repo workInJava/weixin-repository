@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import com.test.common.enums.UserStateEnum;
 import com.test.common.exception.WeiException;
+import com.test.common.utils.Sequence;
 import com.test.project.dao.gen.UserDetailMapper;
 import com.test.project.po.gen.UserDetail;
 import com.test.project.po.gen.UserDetailExample;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements IUserService {
 			LOGGER.error(e.getMessage());
 		}
 		Date now = new Date();
-		String userId ="1";
+		String userId =Sequence.nextId();
 		user.setUserId(userId);
 		user.setUpdateTime(now);
 		user.setCreateTime(now);

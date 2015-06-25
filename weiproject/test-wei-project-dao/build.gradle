@@ -14,6 +14,4 @@ dependencies {
 	compile(libraries.c3p0) { force = true}
 	
 	compile(libraries.spring_jdbc) { force = true}
-	testCompile(libraries.junit)  { force = true }
-	testCompile(libraries.spring_test) { force = true }
 }

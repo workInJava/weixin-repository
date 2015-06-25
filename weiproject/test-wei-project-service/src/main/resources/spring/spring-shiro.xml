@@ -50,7 +50,7 @@
 	<!--自己维护session,废弃servlet容器的会话-->
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
 		<property name="sessionIdCookie" ref="sessionIdCookie"/><!--会话Cookie的模板 -->
-		<property name="listeners">
+		<property name="sessionListeners">
 			<list>
 				<ref bean="shiroListener" />
 			</list>

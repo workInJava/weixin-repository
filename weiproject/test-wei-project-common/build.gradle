@@ -13,4 +13,9 @@ dependencies {
 	compile(libraries.logback) { force = true	}
 	compile(libraries.slf4j_api) { force = true	}
 	testCompile(libraries.slf4j)  { force = true }
+	
+	testCompile(libraries.junit)  { force = true }
+	testCompile(libraries.spring_test) { force = true }
+	
+	compile(libraries.redis_clients){force = true}
 }

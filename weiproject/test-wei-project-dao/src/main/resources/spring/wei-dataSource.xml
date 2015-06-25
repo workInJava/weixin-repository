@@ -31,5 +31,16 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 	
+<!-- 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redisConfig.maxTotal}"/>
+		<property name="maxIdle" value="${redisConfig.maxIdle}"/>
+		<property name="minIdle" value="${redisConfig.minIdle}"/> 
+	</bean>
+	
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+		<constructor-arg index="0">
+				<ref bean="jedisPoolConfig" />
+		</constructor-arg>
+	</bean> -->
 	
 </beans>

@@ -1,15 +1,10 @@
 package com.text.project.test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -25,8 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
 
-	private final static Logger LOGGER = LoggerFactory
-			.getLogger(TestService.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(TestService.class);
 
 	// @Resource
 	// private UserDetailMapper mapper;
@@ -52,7 +46,7 @@ public class TestService {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost("http://route.showapi.com/9-2");
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		nvps.add(new BasicNameValuePair("showapi_timestamp", "2015-06-10 10:12:13"));
+		nvps.add(new BasicNameValuePair("showapi_timestamp", "2015-06-10 22:12:13"));
 		nvps.add(new BasicNameValuePair("showapi_appid", "3"));
 		nvps.add(new BasicNameValuePair("areaid", "101020300"));
 		nvps.add(new BasicNameValuePair("area", "…œ∫£"));
@@ -70,7 +64,7 @@ public class TestService {
 				String tzt = new String(tt, "utf-8");
 				System.out.println(tzt);
 			}
-
+			in.close();
 			// do something useful with the response body
 			// and ensure it is fully consumed
 			EntityUtils.consume(entity);

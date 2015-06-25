@@ -53,6 +53,7 @@ ext{
 
 				freemarker:             'org.freemarker:freemarker:2.3.22',
 
+				//redis
 				redis_clients:			'redis.clients:jedis:2.7.2',
 				
 				httpclient: 			'org.apache.httpcomponents:httpclient:4.5'
