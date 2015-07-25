@@ -33,7 +33,7 @@ ext{
 				shiro_core:				 "org.apache.shiro:shiro-core:${versions.shiro}",
 				shiro_spring:			 "org.apache.shiro:shiro-spring:${versions.shiro}",
 				shiro_web:				 "org.apache.shiro:shiro-web:${versions.shiro}",
-				 
+				commons_lang3:			"org.apache.commons.commons-lang3:3.4", 
 		        c3p0:			         "c3p0:c3p0:0.9.1.2",
      		    ojdbc:			         "ojdbc:ojdbc:14",
 		         

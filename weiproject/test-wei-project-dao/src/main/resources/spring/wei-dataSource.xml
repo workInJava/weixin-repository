@@ -9,38 +9,40 @@
 
 	<context:property-placeholder location="classpath*:properties/jdbc.properties" />
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
 		<property name="driverClass" value="${jdbc.driverClassName}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-	
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-      <property name="dataSource" ref="dataSource" /> 
-      <!-- 指定sqlMapConfig总配置文件，订制的environment在spring容器中不在生效-->
-      <property  name="configLocation"  value="classpath:mybatis/sqlmap/sqlMapConfig.xml"/>
-      <!--指定实体类映射文件，可以指定同时指定某一包以及子包下面的所有配置文件，mapperLocations和configLocation有一个即可，当需要为实体类指定别名时，可指定configLocation属性，再在mybatis总配置文件中采用mapper引入实体类映射文件 -->
-      <!--<property  name="mapperLocations"  value="classpath*:com/xxt/ibatis/dbcp/**/*.xml"/>-->
-   </bean>
+		<property name="dataSource" ref="dataSource" />
+		<!-- 指定sqlMapConfig总配置文件，订制的environment在spring容器中不在生效 -->
+		<property name="configLocation" value="classpath:mybatis/sqlmap/sqlMapConfig.xml" />
+		<!--指定实体类映射文件，可以指定同时指定某一包以及子包下面的所有配置文件，mapperLocations和configLocation有一个即可，当需要为实体类指定别名时，可指定configLocation属性，再在mybatis总配置文件中采用mapper引入实体类映射文件 -->
+		<!--<property name="mapperLocations" value="classpath*:com/xxt/ibatis/dbcp/**/*.xml"/> -->
+	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.test.project.dao.*" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
-	
-<!-- 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-		<property name="maxTotal" value="${redisConfig.maxTotal}"/>
-		<property name="maxIdle" value="${redisConfig.maxIdle}"/>
-		<property name="minIdle" value="${redisConfig.minIdle}"/> 
+
+	<!-- jedisPool配置信息 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redisConfig.maxTotal}" /> <!-- 控制一个pool可分配多少个jedis实例 -->
+		<property name="maxIdle" value="${redisConfig.maxIdle}" />   <!-- 控制一个pool最多有多少个状态为idle(空闲)的jedis实例 -->
+		<property name="maxWaitMillis" value="${redisConfig.maxWaitMillis}" />  <!-- 表示当borrow一个jedis实例时，最大的等待时间，如果超过等待时间，则直接抛出JedisConnectionException -->
+		<property name="testOnBorrow" value="true" /> <!-- 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的 -->
 	</bean>
-	
 	<bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
-		<constructor-arg index="0">
-				<ref bean="jedisPoolConfig" />
-		</constructor-arg>
-	</bean> -->
-	
+		<constructor-arg ref="jedisPoolConfig" />
+		<constructor-arg value="${redisConfig.host}" />
+		<constructor-arg type="int" value="${redisConfig.port}" />
+	</bean>
+
 </beans>

@@ -45,6 +45,7 @@
 
 	<bean id="shiroDbRealm" class="com.text.project.auth.realm.ShiroDbRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+		<property name="cacheManager" ref="redisCacheManager"/>
 	</bean>
 	
 	<!--自己维护session,废弃servlet容器的会话-->
@@ -55,7 +56,7 @@
 				<ref bean="shiroListener" />
 			</list>
 		</property>
-		<property  name="SessionDAO" ref="SessionDao"/>
+		<property  name="SessionDAO" ref="sessionDao"/>
 	</bean>
 	
 	<!--会话Cookie的模板 -->
@@ -67,6 +68,28 @@
 	<bean id="shiroListener" class="com.text.project.auth.listeners.ShiroListener">
 	</bean>
 	
-	<bean id="SessionDao" class="com.text.project.auth.sessiondao.SelfSessionDao">
+	<!-- JedisPool manager -->
+	<bean id="jedisManager" class="com.test.common.redis.wrapper.JedisManager">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+    <!-- <bean id="jedisPoolManager" class="com.test.common.redis.wrapper.JedisPoolManager">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean> -->
+    
+     <bean id="redisCacheManager" class="com.text.project.auth.cache.RedisCacheManager">
+        <property name="redisManager" ref="jedisManager"/>
+    </bean>
+	
+	<!-- <bean id="sessionDao" class="com.text.project.auth.sessiondao.RedisSessionDAO">
+		<property name="cacheManager" ref="redisCacheManager"/>
+	</bean> -->
+	
+	<bean id="sessionDao" class="com.text.project.auth.sessiondao.CustomShiroSessionDAO">
+		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
 	</bean>
+	
+	<bean id="shiroSessionRepository" class="com.text.project.auth.sessiondao.JedisShiroSessionRepository">
+		<property name="jedisManager" ref="jedisManager"/>
+	</bean>
+	
 </beans>
