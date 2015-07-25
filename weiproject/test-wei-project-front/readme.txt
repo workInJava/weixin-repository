@@ -1,0 +1,1 @@
+脚本执行完后，添加目录：Properties--->Deployment Assembly------>add--->folder---->src/main/webapp

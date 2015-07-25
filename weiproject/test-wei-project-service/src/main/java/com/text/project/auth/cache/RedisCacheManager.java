@@ -30,5 +30,13 @@ public class RedisCacheManager implements CacheManager {
 		return c;
 	}
 	// setter和getter方法省略
+
+	public JedisManager getRedisManager() {
+		return redisManager;
+	}
+
+	public void setRedisManager(JedisManager redisManager) {
+		this.redisManager = redisManager;
+	}
 	
 }
