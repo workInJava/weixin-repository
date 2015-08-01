@@ -84,6 +84,8 @@ public class JedisManager {
 			returnResource(jedis, isBroken);
 		}
 	}
+	
+	
 
 	public JedisPool getJedisPool() {
 		return jedisPool;

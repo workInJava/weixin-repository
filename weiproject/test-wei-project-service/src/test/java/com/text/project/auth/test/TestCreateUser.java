@@ -22,11 +22,11 @@ public class TestCreateUser {
 	
 	@Test
 	public void testCreate(){
-		for(int i=0;i<100;i++){
+		//for(int i=0;i<100;i++){
 			UserDetail user = new UserDetail();
-			user.setLoginName("lijunli@qq.com"+i);
-			user.setPassword("123456"+i);
+			user.setLoginName("test@qq.com");
+			user.setPassword("123456");
 			userservic.createUser(user);
-		}
+		//}
 	}
 }

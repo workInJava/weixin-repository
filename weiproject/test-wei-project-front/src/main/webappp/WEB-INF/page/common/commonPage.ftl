@@ -1,4 +1,4 @@
-<#assign basepath='test-wei-project-front/'/>
+<#assign basepath='test-wei-project-front'/>
 <#macro html title javascripts css>
 	<html>
 		 <head>

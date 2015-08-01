@@ -442,7 +442,8 @@ public class JedisPoolManager {
 			throw new JedisException(e);
 		}
 	}
-
+	
+	
 	/**
 	 * 清空当前的redis 库
 	 */

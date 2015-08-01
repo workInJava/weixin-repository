@@ -27,6 +27,7 @@
 				/images/** = anon
 				/javascripts/** = anon
 				/login = authc
+				/logout = logout
 				/** = user
 			</value>
 		</property>
@@ -34,6 +35,7 @@
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="redisCacheManager" />
 		<property name="sessionManager" ref="sessionManager"/>
 	</bean>
 	

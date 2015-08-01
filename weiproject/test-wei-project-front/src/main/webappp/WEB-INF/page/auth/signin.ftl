@@ -3,7 +3,7 @@
 <#include "../common/commonPage.ftl">
 <@html title="Signin" javascripts=javascripts css=css>
     <div class="container">
-      <form class="form-signin" action="" method="POST">
+      <form class="form-signin" action"" method="POST">
       	<label>${error!''}</label>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>

@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import org.apache.shiro.session.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.test.common.redis.wrapper.JedisManager;
 import com.test.common.utils.SerializeUtil;
 
-public class JedisShiroSessionRepository implements ShiroSessionRepository {
+public class JedisShiroSessionRepository implements IShiroSessionRepository {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(JedisShiroSessionRepository.class);
+	
     private static final String REDIS_SHIRO_SESSION = "shiro-session:";
     private static final int SESSION_VAL_TIME_SPAN = 18000;
     private static final int DB_INDEX = 0;
@@ -24,8 +29,7 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
             Long expireTime = sessionTimeOut + SESSION_VAL_TIME_SPAN + (5 * 60);
             getJedisManager().saveValueByKey(DB_INDEX, key, value, expireTime.intValue());
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("save session error");
+            LOGGER.debug("save session error", e);
         }
     }
     @Override
@@ -37,8 +41,7 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
             getJedisManager().deleteByKey(DB_INDEX,
                     SerializeUtil.serialize(buildRedisSessionKey(id)));
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("delete session error");
+        	LOGGER.debug("delete session error", e);
         }
     }
     @Override
@@ -62,6 +65,8 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
         System.out.println("get all sessions");
         return null;
     }
+    
+    //
     private String buildRedisSessionKey(Serializable sessionId) {
         return REDIS_SHIRO_SESSION + sessionId;
     }

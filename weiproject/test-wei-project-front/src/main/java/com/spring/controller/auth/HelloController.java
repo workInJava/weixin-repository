@@ -41,7 +41,7 @@ public class HelloController {
 	@RequestMapping(value = "/loginOut")
 	public String loginOut(Model model) {
 		SecurityUtils.getSubject().logout();
-		return "/auth/signin";
+		return "redirect:/login";
 	}
 
 }
