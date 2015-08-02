@@ -62,6 +62,7 @@ public class JedisShiroSessionRepository implements IShiroSessionRepository {
     @Override
     public Collection<Session> getAllSessions() {
         //TODO
+    	getJedisManager().getAllValue(DB_INDEX);
         System.out.println("get all sessions");
         return null;
     }

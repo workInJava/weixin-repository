@@ -85,7 +85,9 @@ public class JedisManager {
 		}
 	}
 	
-	
+	public void getAllValue(int dbIndex){
+		LOGGER.info("no instance");
+	}
 
 	public JedisPool getJedisPool() {
 		return jedisPool;

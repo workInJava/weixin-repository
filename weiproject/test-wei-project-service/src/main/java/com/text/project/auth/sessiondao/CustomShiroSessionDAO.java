@@ -45,7 +45,6 @@ public class CustomShiroSessionDAO extends AbstractSessionDAO {
     }
     @Override
     protected Session doReadSession(Serializable sessionId) {
-        System.out.println("do read session");
         LOGGER.info("do read session");
         return getShiroSessionRepository().getSession(sessionId);
     }
