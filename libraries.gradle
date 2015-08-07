@@ -56,7 +56,10 @@ ext{
 				//redis
 				redis_clients:			'redis.clients:jedis:2.7.2',
 				
-				httpclient: 			'org.apache.httpcomponents:httpclient:4.5'
+				httpclient: 			'org.apache.httpcomponents:httpclient:4.5',
+				json:					'org.json:json:20141113',
+				json_lib:				'net.sf.json-lib:json-lib:2.4'
+				
 				
 	]
 }

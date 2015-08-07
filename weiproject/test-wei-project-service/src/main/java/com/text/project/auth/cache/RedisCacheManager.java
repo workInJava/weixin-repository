@@ -19,9 +19,10 @@ public class RedisCacheManager implements CacheManager {
 	private final ConcurrentMap<String, Cache> caches = new ConcurrentHashMap<String, Cache>();
 
 	private JedisManager redisManager;
-
+	
+	@Override
 	public <K, V> Cache<K, V> getCache(String name) throws CacheException {
-		logger.debug("获取名称为: " + name + " 的RedisCache实例");
+		logger.debug("==================获取名称为: " + name + " 的RedisCache实例===========");
 		Cache c = caches.get(name);
 		if (c == null) {
 			c = new RedisCache<K, V>(name,redisManager);
@@ -29,7 +30,6 @@ public class RedisCacheManager implements CacheManager {
 		}
 		return c;
 	}
-	// setter和getter方法省略
 
 	public JedisManager getRedisManager() {
 		return redisManager;

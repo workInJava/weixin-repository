@@ -21,8 +21,8 @@ import com.text.project.service.IUserService;
 import com.text.project.utils.EndecryptUtils;
 
 @Service
-public class UserServiceImpl implements IUserService {
-	
+public class UserServiceImpl implements IUserService{
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Resource
