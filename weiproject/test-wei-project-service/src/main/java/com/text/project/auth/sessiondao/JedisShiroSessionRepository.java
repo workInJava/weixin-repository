@@ -17,7 +17,7 @@ public class JedisShiroSessionRepository implements IShiroSessionRepository {
 
 	private static final String REDIS_SHIRO_SESSION = "shiro-session:";
 	private static final int SESSION_VAL_TIME_SPAN = 18000;
-	private static final int DB_INDEX = 1;
+	private static final int DB_INDEX = 0;
 	private JedisManager jedisManager;
 
 	@Override

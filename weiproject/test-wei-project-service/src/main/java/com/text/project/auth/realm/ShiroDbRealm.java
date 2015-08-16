@@ -14,7 +14,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +44,7 @@ public class ShiroDbRealm extends AuthorizingRealm implements Serializable {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authcToken) throws AuthenticationException {
+		LOGGER.info("========================doGetAuthenticationInfo==========================");
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		String userName = token.getUsername();
 		if (StringUtils.hasText(userName)) {

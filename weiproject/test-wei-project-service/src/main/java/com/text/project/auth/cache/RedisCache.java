@@ -18,7 +18,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
 	private static Logger LOGGER = LoggerFactory.getLogger(RedisCache.class);
 	
 	private static final String REDIS_SHIRO_CACHE = "shiro-cache:";
-	private static final int DB_INDEX = 1;
+	private static final int DB_INDEX = 0;
 	private JedisManager jedisManager;
 	private String name;
 
@@ -47,7 +47,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
 	@Override
 	public V get(K key) throws CacheException {
 		byte[] byteKey = SerializeUtil.serialize(buildCacheKey(key));
-		byte[] byteValue = new byte[0];
+		byte[] byteValue = null;
 		try {
 			byteValue = jedisManager.getValueByKey(DB_INDEX, byteKey);
 		} catch (Exception e) {
@@ -108,6 +108,6 @@ public class RedisCache<K, V> implements Cache<K, V> {
 	}
 
 	private String buildCacheKey(Object key) {
-		return REDIS_SHIRO_CACHE + getName() + ":" + key;
+		return REDIS_SHIRO_CACHE +getName() + key;
 	}
 }

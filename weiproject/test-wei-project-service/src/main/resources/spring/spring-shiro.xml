@@ -47,7 +47,7 @@
 
 	<bean id="shiroDbRealm" class="com.text.project.auth.realm.ShiroDbRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher"/>
-		<property name="cacheManager" ref="redisCacheManager"/> 
+		<property name="cacheManager" ref="redisCacheManager"/>
 		<property name="authenticationCachingEnabled" value="true"/>
 	</bean>
 	
@@ -83,14 +83,14 @@
         <property name="redisManager" ref="jedisManager"/>
     </bean>
 	
-	<bean id="sessionDao" class="com.text.project.auth.sessiondao.RedisSessionDAO">
+	<!-- <bean id="sessionDao" class="com.text.project.auth.sessiondao.RedisSessionDAO">
 		<property name="cacheManager" ref="redisCacheManager"/>
 		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
-	</bean> 
+	</bean> -->
 	
-	<!-- <bean id="sessionDao" class="com.text.project.auth.sessiondao.CustomShiroSessionDAO">
+	<bean id="sessionDao" class="com.text.project.auth.sessiondao.CustomShiroSessionDAO">
 		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
-	</bean>-->
+	</bean>
 	
 	<bean id="shiroSessionRepository" class="com.text.project.auth.sessiondao.JedisShiroSessionRepository">
 		<property name="jedisManager" ref="jedisManager"/>

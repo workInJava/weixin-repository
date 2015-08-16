@@ -20,12 +20,13 @@ public class CustomShiroSessionDAO extends AbstractSessionDAO {
     }
     @Override
     public void delete(Session session) {
+    	LOGGER.info("===========================delete session1=======================");
         if (session == null) {
             return;
         }
         Serializable id = session.getId();
         if (id != null) {
-            LOGGER.info("delete session");
+        	LOGGER.info("===========================delete session2=======================");
             getShiroSessionRepository().deleteSession(id);
         }
         //TODO if session is too large,when session destory clear shiro cache
@@ -37,7 +38,7 @@ public class CustomShiroSessionDAO extends AbstractSessionDAO {
     }
     @Override
     protected Serializable doCreate(Session session) {
-    	LOGGER.info("do create session");
+    	LOGGER.info("===========================do create session=======================");
         Serializable sessionId = this.generateSessionId(session);
         this.assignSessionId(session, sessionId);
         getShiroSessionRepository().saveSession(session);
@@ -45,7 +46,7 @@ public class CustomShiroSessionDAO extends AbstractSessionDAO {
     }
     @Override
     protected Session doReadSession(Serializable sessionId) {
-        LOGGER.info("do read session");
+        LOGGER.info("==============================do read session======================");
         return getShiroSessionRepository().getSession(sessionId);
     }
     public IShiroSessionRepository getShiroSessionRepository() {
