@@ -44,4 +44,6 @@ public class HelloController {
 		return "redirect:/login";
 	}
 
+	
+
 }

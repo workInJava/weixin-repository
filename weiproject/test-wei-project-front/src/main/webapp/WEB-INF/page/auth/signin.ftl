@@ -10,9 +10,15 @@
         <input type="text" id="inputEmail" name="loginName"  class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
+        <div class="linked">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <a herf=""> register</a>
+          </label>
+          <label>
+            ¡¢
+          </label>
+          <label>
+            <a herf="${basepath}/">forget pasword</a>
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
