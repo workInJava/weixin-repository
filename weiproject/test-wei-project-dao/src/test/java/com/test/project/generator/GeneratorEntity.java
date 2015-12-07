@@ -19,7 +19,7 @@ public class GeneratorEntity {
 	private static void generator() {
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
-		File configFile = new File("D:/github/weixin-repository/weiproject/test-wei-project-dao/src/test/resources/generatorConfig_user.xml");
+		File configFile = new File("D:/whm/repository/weixin-repository/weiproject/test-wei-project-dao/src/test/resources/generatorConfig_user.xml");
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config;
 		try {

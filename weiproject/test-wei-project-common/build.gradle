@@ -18,7 +18,7 @@ dependencies {
 	testCompile(libraries.spring_test) { force = true }
 	
 	compile(libraries.json){force = true}
-	compile(libraries.json_lib){force = true}
+	//compile(libraries.json_lib){force = true}
 	
 	compile(libraries.redis_clients){force = true}
 }

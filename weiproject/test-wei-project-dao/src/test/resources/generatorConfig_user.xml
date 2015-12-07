@@ -5,51 +5,54 @@
 
 <generatorConfiguration>
 
-	<classPathEntry location="D:/ojdbc14-10.2.0.2.0.jar" />
+	<classPathEntry location="C:/Users/chen/.m2/repository/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar" />
 	
 	<context id="DB2Tables" targetRuntime="MyBatis3">
 
-		<property name="suppressTypeWarnings" value="true" />
+		<!-- <property name="suppressTypeWarnings" value="true" />
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
 		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
 		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
-		
+		 -->
 		<commentGenerator>  
             <property name="suppressDate" value="true"/>  
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
             <property name="suppressAllComments" value="true"/>  
         </commentGenerator> 
 		<!--数据库链接URL，用户名、密码 -->
-		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:orcl" 
-			userId="whm" password="test" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://180.150.186.220:3306/fms" 
+			userId="product_user" password="product_user" />
 		
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 		
 		<!-- 生成模型包名和位置 -->
-		<javaModelGenerator targetPackage="com.test.project.po.gen"
-			targetProject="D:/github/weixin-repository/weiproject/test-wei-project-dao/src/main/java">
+		<javaModelGenerator targetPackage="com.zline.zlfms.biz.entity"
+			targetProject="D:/whm/workspace/zlfms-biz/src/main/java">
 			<property name="enableSubPackages" value="false" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!-- 生成映射文件的包名和位置 -->
-		<sqlMapGenerator targetPackage="mybatis.sqlmap.gen"
-			targetProject="D:/github/weixin-repository/weiproject/test-wei-project-dao/src/main/resources">
+		<sqlMapGenerator targetPackage="sqlmap"
+			targetProject="D:/whm/workspace/zlfms-biz/src/main/resources">
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- 生成DAO包名和位置 -->
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.test.project.dao.gen"
+		<!-- <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.project.dao.gen"
 			targetProject="D:/github/weixin-repository/weiproject/test-wei-project-dao/src/main/java">
 			<property name="enableSubPackages" value="false" />
-		</javaClientGenerator>
+		</javaClientGenerator> -->
 
-		<table tableName="user_detail"  domainObjectName="UserDetail" />
-		<table tableName="role_detail"  domainObjectName="Role" />
-		<table tableName="permission"  domainObjectName="Permission" />
-		<table tableName="ROLE_OF_USER"  domainObjectName="RoleOfUser" />
-		<table tableName="USER_PERMISSION"  domainObjectName="UserPermission" />
-		<table tableName="ROLE_PERMISSION"  domainObjectName="RolePermission" />
+		<table tableName="remit_item"  domainObjectName="RemitItem">
+			<!-- <ignoreColumn  column="is_deleted" />
+			<ignoreColumn  column="create_id" />
+			<ignoreColumn  column="create_time" />
+			<ignoreColumn  column="last_update_id" />
+			<ignoreColumn  column="last_update_time" /> -->
+			
+		</table>
+	
 		<!-- <table tableName="mytest" schema="public" /> -->
 	</context>
 </generatorConfiguration>
